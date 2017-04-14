@@ -4,6 +4,9 @@ import calendar
 from datetime import date
 from holiday import get_holiday
 
+def const_members(count,list):
+    return list[count:]+list[:count]
+
 members=[]
 year = date.today().year
 month = date.today().month
@@ -26,11 +29,14 @@ for day in range(1,end):
         f.write(date(year,month,day).strftime("%Y/%m/%d") + ": \t" + members[k] + "\n")
         k =( k + 1 ) %len(members)
 
+
 f.close()
 
-a=[]
-for j in range(len(members)):
-    a.append(members[(k+j)%len(members)])
+members=const_members(k,members)
 
-members = a
-print(members)
+f = open("MemberList1.txt","w")
+
+for i,v in enumerate (members):
+    f.write(v+"\n")
+
+f.close()
