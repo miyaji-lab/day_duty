@@ -1,3 +1,4 @@
+# coding: utf-8
 import os
 import sys
 import calendar
@@ -14,7 +15,7 @@ def text_gen(f,members):
     holyday_list=[d for d,name in get_holiday(year)]
 
     k = 0
-    for day in range(1,end):
+    for day in range(1,end+1):
         if date(year,month,day) in holyday_list:
             continue
         if date(year,month,day).isoweekday() < 6:
